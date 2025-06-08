@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Better Create My Asset List - UI</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  
+</head>
+<body class="bg-gray-950 text-gray-100 min-h-screen p-8">
+
+  <div class="max-w-7xl mx-auto">
+    <!-- Header -->
+    <h1 class="text-4xl font-bold mb-8">Create My Asset List</h1>
+
+    <!-- Filter chips -->
+    <div class="flex flex-wrap gap-3 mb-6">
+      <button class="flex items-center gap-2 px-5 py-2 rounded-full bg-blue-600 text-white font-medium hover:bg-blue-700">
+        All Objects <span class="text-sm">(27949)</span>
+      </button>
+      <button class="flex items-center gap-2 px-5 py-2 rounded-full bg-gray-800 text-gray-300 hover:bg-gray-700">
+        🟦 Payloads <span class="text-sm">(14035)</span>
+      </button>
+      <button class="flex items-center gap-2 px-5 py-2 rounded-full bg-gray-800 text-gray-300 hover:bg-gray-700">
+        Debris <span class="text-sm">(10588)</span>
+      </button>
+      <button class="flex items-center gap-2 px-5 py-2 rounded-full bg-gray-800 text-gray-300 hover:bg-gray-700">
+        🚀 Rocket Bodies <span class="text-sm">(2167)</span>
+      </button>
+      <button class="flex items-center gap-2 px-5 py-2 rounded-full bg-gray-800 text-gray-300 hover:bg-gray-700">
+        Unknown <span class="text-sm">(557)</span>
+      </button>
+    </div>
+
+    <!-- Search & dropdowns -->
+    <div class="flex flex-wrap items-center gap-4 mb-8">
+      <!-- Search input -->
+      <div class="relative flex-1 min-w-[280px]">
+        <input
+          type="text"
+          placeholder="Search by Name / NORAD ID"
+          class="w-full px-5 py-3 rounded-md border border-gray-700 bg-gray-800 text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600"
+        />
+        <button class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-200">✕</button>
+      </div>
+
+      <!-- Dropdowns -->
+      <select class="px-5 py-3 rounded-md border border-gray-700 bg-gray-800 text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-600">
+        <option>Constellation</option>
+      </select>
+      <select class="px-5 py-3 rounded-md border border-gray-700 bg-gray-800 text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-600">
+        <option>Country</option>
+      </select>
+      <select class="px-5 py-3 rounded-md border border-gray-700 bg-gray-800 text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-600">
+        <option>Purpose</option>
+      </select>
+      <select class="px-5 py-3 rounded-md border border-gray-700 bg-gray-800 text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-600">
+        <option>Regime</option>
+      </select>
+
+      <!-- Filter icon -->
+      <button class="p-3 rounded-md border border-gray-700 text-gray-400 hover:text-gray-200 bg-gray-800">
+        🧰
+      </button>
+    </div>
+
+    <!-- Main content layout -->
+    <div class="flex flex-col md:flex-row gap-6">
+      <!-- Table section -->
+      <div class="flex-1 overflow-x-auto">
+        <div class="flex items-center mb-3">
+          <input type="checkbox" class="mr-2 accent-blue-600" />
+          <label>Select all</label>
+          <div class="ml-auto text-sm text-gray-400">27949 objects</div>
+        </div>
+
+        <table class="w-full text-left text-sm border-collapse">
+          <thead class="sticky top-0 bg-gray-900 border-b border-gray-700 text-gray-400 z-10">
+            <tr>
+              <th class="p-3">#</th>
+              <th class="p-3">NORAD ID</th>
+              <th class="p-3">Name</th>
+              <th class="p-3">COSPAR ID</th>
+              <th class="p-3">Regime</th>
+              <th class="p-3">Country</th>
+              <th class="p-3">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Example rows -->
+            <tr class="border-b border-gray-800 even:bg-gray-900 hover:bg-gray-800">
+              <td class="p-3"><input type="checkbox" checked class="accent-blue-600" /></td>
+              <td class="p-3">5</td>
+              <td class="p-3">VANGUARD 1</td>
+              <td class="p-3">1958-002B</td>
+              <td class="p-3">LMO, LEO</td>
+              <td class="p-3">US</td>
+              <td class="p-3">🔵</td>
+            </tr>
+            <tr class="border-b border-gray-800 even:bg-gray-900 hover:bg-gray-800">
+              <td class="p-3"><input type="checkbox" checked class="accent-blue-600" /></td>
+              <td class="p-3">11</td>
+              <td class="p-3">VANGUARD 2</td>
+              <td class="p-3">1959-001A</td>
+              <td class="p-3">LMO, LEO</td>
+              <td class="p-3">US</td>
+              <td class="p-3">🛰️</td>
+            </tr>
+            <!-- Add more rows -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Selected Assets panel -->
+      <div class="w-full md:w-1/3 flex flex-col bg-gray-900 border border-blue-600 rounded-lg p-5 sticky top-8 h-fit max-h-[80vh]">
+        <div class="flex items-center justify-between mb-5">
+          <span class="text-blue-400 text-sm">6 objects selected</span>
+          <button class="text-gray-400 hover:text-gray-200 text-sm">Clean all ✕</button>
+        </div>
+
+        <div class="flex-1 space-y-3 overflow-y-auto mb-4">
+          <!-- Example selected asset -->
+          <div class="flex items-center justify-between p-3 rounded bg-gray-800 border border-gray-700 text-sm">
+            <span>20 VANGUARD 3</span>
+            <button class="text-gray-400 hover:text-gray-200">✕</button>
+          </div>
+          <div class="flex items-center justify-between p-3 rounded bg-gray-800 border border-gray-700 text-sm">
+            <span>22 EXPLORER 7</span>
+            <button class="text-gray-400 hover:text-gray-200">✕</button>
+          </div>
+          <!-- More selected assets -->
+        </div>
+
+        <!-- Proceed button -->
+        <button class="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded">
+          PROCEED
+        </button>
+      </div>
+    </div>
+  </div>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    };
+  </script>
+</body>
+</html>

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Table with Filters and Sorting</title>
+  <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  </head>
+  <body class="bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-gray-100 min-h-screen p-6">
+  
+    <div class="max-w-7xl mx-auto">
+      <!-- Header -->
+      <h1 class="text-3xl font-bold mb-6">Create My Asset list</h1>
+  
+      <!-- Top filters -->
+      <div class="flex flex-wrap gap-2 mb-4">
+        <button class="px-4 py-2 rounded-full border border-blue-500 text-blue-400 bg-gray-800">All Objects (27949)</button>
+        <button class="px-4 py-2 rounded-full border border-gray-600 text-gray-300 bg-gray-800">🟦 Payloads (14035)</button>
+        <button class="px-4 py-2 rounded-full border border-gray-600 text-gray-300 bg-gray-800">Debris (10588)</button>
+        <button class="px-4 py-2 rounded-full border border-gray-600 text-gray-300 bg-gray-800">🚀 Rocket Bodies (2167)</button>
+        <button class="px-4 py-2 rounded-full border border-gray-600 text-gray-300 bg-gray-800">Unknown (557)</button>
+      </div>
+  
+      <!-- Search + Dropdown Filters -->
+      <div class="flex flex-wrap items-center gap-3 mb-6">
+        <!-- Search box -->
+        <div class="relative flex-1 min-w-[250px]">
+          <input
+            type="text"
+            placeholder="Search by Name / NORAD ID"
+            class="w-full px-4 py-2 rounded border border-gray-600 bg-gray-800 text-gray-100 placeholder-gray-400 focus:outline-none"
+          />
+          <button class="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-200">✕</button>
+        </div>
+  
+        <!-- Example dropdowns -->
+        <select class="px-4 py-2 rounded border border-gray-600 bg-gray-800 text-gray-100">
+          <option>Constellation</option>
+        </select>
+        <select class="px-4 py-2 rounded border border-gray-600 bg-gray-800 text-gray-100">
+          <option>Country</option>
+        </select>
+        <select class="px-4 py-2 rounded border border-gray-600 bg-gray-800 text-gray-100">
+          <option>Purpose</option>
+        </select>
+        <select class="px-4 py-2 rounded border border-gray-600 bg-gray-800 text-gray-100">
+          <option>Regime</option>
+        </select>
+  
+        <!-- Filter icon -->
+        <button class="p-2 rounded border border-gray-600 text-gray-400 hover:text-gray-200 bg-gray-800">🧰</button>
+      </div>
+  
+      <!-- Main content: Table + Selected Assets -->
+      <div class="flex flex-col md:flex-row gap-6">
+        <!-- Table section -->
+        <div class="flex-1 overflow-x-auto">
+          <div class="flex items-center mb-2">
+            <input type="checkbox" class="mr-2" />
+            <label>Select all</label>
+            <div class="ml-auto text-sm text-gray-400">27949 objects</div>
+          </div>
+  
+          <table class="w-full text-left text-sm border-collapse">
+            <thead class="border-b border-gray-700 text-gray-400">
+              <tr>
+                <th class="p-3">#</th>
+                <th class="p-3">NORAD ID</th>
+                <th class="p-3">Name</th>
+                <th class="p-3">COSPAR ID</th>
+                <th class="p-3">Regime</th>
+                <th class="p-3">Country</th>
+                <th class="p-3">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Example rows -->
+              <tr class="border-b border-gray-700 hover:bg-gray-800">
+                <td class="p-3"><input type="checkbox" checked /></td>
+                <td class="p-3">5</td>
+                <td class="p-3">VANGUARD 1</td>
+                <td class="p-3">1958-002B</td>
+                <td class="p-3">LMO, LEO</td>
+                <td class="p-3">US</td>
+                <td class="p-3">🔵</td>
+              </tr>
+              <tr class="border-b border-gray-700 hover:bg-gray-800">
+                <td class="p-3"><input type="checkbox" checked /></td>
+                <td class="p-3">11</td>
+                <td class="p-3">VANGUARD 2</td>
+                <td class="p-3">1959-001A</td>
+                <td class="p-3">LMO, LEO</td>
+                <td class="p-3">US</td>
+                <td class="p-3">🛰️</td>
+              </tr>
+              <!-- Add more rows as needed -->
+            </tbody>
+          </table>
+        </div>
+  
+        <!-- Selected Assets panel -->
+        <div class="w-full md:w-1/3 bg-gray-800 border border-blue-500 rounded p-4 flex flex-col">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-blue-400 text-sm">6 objects selected</span>
+            <button class="text-gray-400 hover:text-gray-200 text-sm">Clean all ✕</button>
+          </div>
+  
+          <div class="flex-1 space-y-2 overflow-y-auto">
+            <!-- Example selected asset -->
+            <div class="flex items-center justify-between p-2 rounded border border-gray-600 bg-gray-900">
+              <span>20 VANGUARD 3</span>
+              <button class="text-gray-400 hover:text-gray-200">✕</button>
+            </div>
+            <div class="flex items-center justify-between p-2 rounded border border-gray-600 bg-gray-900">
+              <span>22 EXPLORER 7</span>
+              <button class="text-gray-400 hover:text-gray-200">✕</button>
+            </div>
+            <!-- More selected assets -->
+          </div>
+  
+          <!-- Proceed button -->
+          <button class="mt-4 w-full py-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded">
+            PROCEED
+          </button>
+        </div>
+      </div>
+    </div>
+    <script>
+        tailwind.config = {
+          darkMode: 'class',
+        };
+      </script>
+  </body>
+  </html>
+  
+<!-- 
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 p-8 text-gray-900 dark:text-gray-100">
+
+    <div class="max-w-sm mx-auto">
+        <div class="relative">
+          <input
+            type="text"
+            id="dropdownSearchInput"
+            placeholder="Search role..."
+            class="block w-full border border-gray-300 dark:border-gray-600 rounded px-3 py-2 text-sm bg-white dark:bg-gray-700 dark:text-gray-100 focus:outline-none"
+            oninput="filterDropdown()"
+            onclick="toggleDropdown()"
+          />
+    
+          <div
+            id="dropdoawnMenu"
+            class="absolute z-10 mt-1 w-full bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded shadow-lg hidden max-h-48 overflow-auto"
+          >
+            <!-- Options will go here -->
+            <div class="dropdown-option px-3 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600" onclick="selectOption('Admin')">Admin</div>
+            <div class="dropdown-option px-3 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600" onclick="selectOption('User')">User</div>
+            <div class="dropdown-option px-3 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600" onclick="selectOption('Moderator')">Moderator</div>
+          </div>
+        </div>
+
+    <div class="max-w-5xl mx-auto bg-white dark:bg-gray-800 p-6 shadow rounded-xl space-y-6">
+      <!-- Filters -->
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <select id="roleFilter" class="border border-gray-300 dark:border-gray-600 rounded px-3 py-2 text-sm bg-white dark:bg-gray-700 dark:text-gray-100">
+          <option value="">All Roles</option>
+          <option value="Admin">Admin</option>
+          <option value="User">User</option>
+          <option value="Moderator">Moderator</option>
+        </select>
+  
+        <div id="statusChips" class="flex flex-wrap gap-2">
+          <!-- Status chips will be rendered here -->
+        </div>
+      </div>
+  
+      <!-- Table -->
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="border-b text-sm text-gray-600 dark:text-gray-300 dark:border-gray-600">
+              <th class="p-3">
+                <input type="checkbox" id="selectAllCheckbox" />
+              </th>
+              <th class="p-3 cursor-pointer select-none" data-sort-key="name">
+                Name <span class="sort-indicator"></span>
+              </th>
+              <th class="p-3 cursor-pointer select-none" data-sort-key="role">
+                Role <span class="sort-indicator"></span>
+              </th>
+              <th class="p-3 cursor-pointer select-none" data-sort-key="status">
+                Status <span class="sort-indicator"></span>
+              </th>
+            </tr>
+          </thead>
+          <tbody id="tableBody" class="text-sm text-gray-700 dark:text-gray-200">
+            <!-- Table rows will be rendered here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  
+    <script>
+      const initialData = [
+        { id: 1, name: "Alice", role: "Admin", status: "Active" },
+        { id: 2, name: "Bob", role: "User", status: "Inactive" },
+        { id: 3, name: "Charlie", role: "Moderator", status: "Active" },
+        { id: 4, name: "Diana", role: "User", status: "Pending" },
+      ];
+  
+      const statuses = ["Active", "Inactive", "Pending"];
+      let selectedRole = "";
+      let selectedStatuses = [];
+      let sortConfig = { key: "name", direction: "asc" };
+      let selectedRows = [];
+  
+      const tableBody = document.getElementById("tableBody");
+      const roleFilter = document.getElementById("roleFilter");
+      const statusChips = document.getElementById("statusChips");
+      const selectAllCheckbox = document.getElementById("selectAllCheckbox");
+  
+      function renderStatusChips() {
+        statusChips.innerHTML = "";
+        statuses.forEach((status) => {
+          const chip = document.createElement("button");
+          chip.className = `px-3 py-1 rounded-full text-sm border ${
+            selectedStatuses.includes(status)
+              ? "bg-blue-500 text-white border-blue-500"
+              : "bg-gray-100 text-gray-700 border-gray-300 dark:bg-gray-700 dark:text-gray-100 dark:border-gray-500"
+          }`;
+          chip.textContent = status;
+          chip.addEventListener("click", () => toggleStatus(status));
+          statusChips.appendChild(chip);
+        });
+      }
+  
+      function toggleStatus(status) {
+        if (selectedStatuses.includes(status)) {
+          selectedStatuses = selectedStatuses.filter((s) => s !== status);
+        } else {
+          selectedStatuses.push(status);
+        }
+        renderStatusChips();
+        renderTable();
+      }
+  
+      function toggleSort(key) {
+        if (sortConfig.key === key) {
+          sortConfig.direction = sortConfig.direction === "asc" ? "desc" : "asc";
+        } else {
+          sortConfig.key = key;
+          sortConfig.direction = "asc";
+        }
+        renderTable();
+        updateSortIndicators();
+      }
+  
+      function updateSortIndicators() {
+        document.querySelectorAll("thead th").forEach((th) => {
+          const span = th.querySelector(".sort-indicator");
+          if (span) {
+            const key = th.getAttribute("data-sort-key");
+            if (key === sortConfig.key) {
+              span.textContent = sortConfig.direction === "asc" ? "▲" : "▼";
+            } else {
+              span.textContent = "";
+            }
+          }
+        });
+      }
+  
+      function renderTable() {
+        const filteredData = initialData
+          .filter((row) => (selectedRole ? row.role === selectedRole : true))
+          .filter((row) =>
+            selectedStatuses.length > 0
+              ? selectedStatuses.includes(row.status)
+              : true
+          )
+          .sort((a, b) => {
+            const aValue = a[sortConfig.key];
+            const bValue = b[sortConfig.key];
+            if (aValue < bValue) return sortConfig.direction === "asc" ? -1 : 1;
+            if (aValue > bValue) return sortConfig.direction === "asc" ? 1 : -1;
+            return 0;
+          });
+  
+        tableBody.innerHTML = "";
+        filteredData.forEach((row) => {
+          const tr = document.createElement("tr");
+          tr.className = "border-b hover:bg-gray-50 dark:hover:bg-gray-700 dark:border-gray-600 transition-colors";
+          tr.innerHTML = `
+            <td class="p-3">
+              <input type="checkbox" ${
+                selectedRows.includes(row.id) ? "checked" : ""
+              } data-row-id="${row.id}" />
+            </td>
+            <td class="p-3">${row.name}</td>
+            <td class="p-3">${row.role}</td>
+            <td class="p-3">${row.status}</td>
+          `;
+          tableBody.appendChild(tr);
+        });
+  
+        // Update "select all" checkbox
+        const allIds = filteredData.map((row) => row.id);
+        selectAllCheckbox.checked =
+          allIds.length > 0 &&
+          allIds.every((id) => selectedRows.includes(id));
+  
+        // Add row checkbox listeners
+        tableBody.querySelectorAll("input[type=checkbox]").forEach((checkbox) => {
+          checkbox.addEventListener("change", (e) => {
+            const rowId = parseInt(e.target.getAttribute("data-row-id"));
+            if (e.target.checked) {
+              selectedRows.push(rowId);
+            } else {
+              selectedRows = selectedRows.filter((id) => id !== rowId);
+            }
+            selectAllCheckbox.checked =
+              allIds.length > 0 &&
+              allIds.every((id) => selectedRows.includes(id));
+          });
+        });
+      }
+  
+      // Event listeners
+      roleFilter.addEventListener("change", (e) => {
+        selectedRole = e.target.value;
+        renderTable();
+      });
+  
+      document.querySelectorAll("thead th[data-sort-key]").forEach((th) => {
+        th.addEventListener("click", () => {
+          const key = th.getAttribute("data-sort-key");
+          toggleSort(key);
+        });
+      });
+  
+      selectAllCheckbox.addEventListener("change", (e) => {
+        const filteredData = initialData
+          .filter((row) => (selectedRole ? row.role === selectedRole : true))
+          .filter((row) =>
+            selectedStatuses.length > 0
+              ? selectedStatuses.includes(row.status)
+              : true
+          );
+  
+        if (e.target.checked) {
+          selectedRows = filteredData.map((row) => row.id);
+        } else {
+          selectedRows = selectedRows.filter(
+            (id) => !filteredData.map((row) => row.id).includes(id)
+          );
+        }
+        renderTable();
+      });
+  
+      // Initial render
+      renderStatusChips();
+      renderTable();
+      updateSortIndicators();
+
+      function toggleDropdown() {
+      const menu = document.getElementById("dropdownMenu");
+      menu.classList.toggle("hidden");
+    }
+
+    function selectOption(value) {
+      document.getElementById("dropdownSearchInput").value = value;
+      document.getElementById("dropdownMenu").classList.add("hidden");
+    }
+
+    function filterDropdown() {
+      const input = document.getElementById("dropdownSearchInput").value.toLowerCase();
+      const options = document.querySelectorAll("#dropdownMenu .dropdown-option");
+
+      options.forEach(option => {
+        const text = option.textContent.toLowerCase();
+        option.style.display = text.includes(input) ? "" : "none";
+      });
+    }
+
+    // Close dropdown when clicking outside
+    document.addEventListener("click", function(event) {
+      const dropdown = document.getElementById("dropdownMenu");
+      const input = document.getElementById("dropdownSearchInput");
+
+      if (!dropdown.contains(event.target) && !input.contains(event.target)) {
+        dropdown.classList.add("hidden");
+      }
+    });
+    </script>
+  </body>
+</html> -->
